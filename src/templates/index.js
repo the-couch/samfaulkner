@@ -45,7 +45,7 @@ class Home extends React.Component {
 
     let animate = true
 
-    const debounce = (func, wait = 80) => {
+    const debounce = (func, wait = 100) => {
       let timeout
       return (...args) => {
         clearTimeout(timeout)
@@ -67,8 +67,9 @@ class Home extends React.Component {
       }
     }
 
-    const debounced = debounce(animateSlide, 80)
+    const debounced = debounce(animateSlide, 100)
     window.addEventListener('mousewheel', (e) => { debounced(e) })
+    window.addEventListener('DOMMouseScroll', (e) => { debounced(e) })
 
   }
   render () {

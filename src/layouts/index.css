@@ -87,7 +87,9 @@ img {
 
 body, h1, h2, h3, h4, h5 {
   font-weight: normal;
-  font-family: 'sharp web'
+  font-family: 'sharp web';
+  padding: 10px 0;
+  margin: 0;
 }
 .slides {
   width: 100vw;
@@ -175,12 +177,17 @@ li.is-selected {
 
 
 .is-selected .slide__bg {
-  /*background-size: 100% 100%;*/
+  background-size: 100% 100%;
   background-position: 50% 50%;
 }
 
 .slide__bg img {
-  opacity: 0;
+  /*opacity: 0;*/
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 h1 {
@@ -202,9 +209,9 @@ h2 {
   transform-origin: top left;
   @media (min-width: 700px) {
     position: absolute;
-    left: -110px;
-    bottom: -90px;
-    transform: rotate(-90deg) translateX(-100px);
+    left: -80px;
+    bottom: 0px;
+    transform: rotate(-90deg) translateX(0px);
     overflow: hidden;
 
   }
@@ -214,7 +221,8 @@ h2 {
   @media (min-width: 700px) {
     position: relative;
     /*top: 40px;*/
-    transition: all 6s;
+    transition: all .5s;
+    transition-delay: .4s;
     transform: translateY(100px);
   }
 }
@@ -227,7 +235,8 @@ h2 {
   @media (min-width: 700px) {
     position: relative;
     /*top: 40px;*/
-    transition: all 6s;
+    transition: all .5s;
+    transition-delay: .6s;
     transform: translateY(100px);
   }
 }
@@ -267,13 +276,25 @@ h5 {
   left: 30px;
   z-index: 10;
   color: white;
-  top: -80px;
+  top: -30px;
+  overflow: hidden;
+  padding: 18px 0;
+}
+
+.slide__number h2 {
+  transition: all .45s;
+  transition-delay: .7s;
+  transform: translateY(80px);
+}
+
+.is-selected .slide__number h2 {
+  transform: translateY(0px);
 }
 
 .is-selected .slide__text {
   @media (min-width: 700px) {
     transform: translateX(0) rotate(-90deg);
-    bottom: -90px;
+    bottom: -50px;
   }
 }
 
