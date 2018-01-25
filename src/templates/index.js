@@ -83,12 +83,18 @@ class Home extends React.Component {
         <div className=''>
           <div className='slide__background' style={{backgroundColor: studies[currentSlide].node.backgroundColor}} />
           <ul className='slides js_slider'>
-            {studies.map((study) => (
+            {studies.map((study, i) => (
               <li className='slide' key={study.node.id}>
                 <div className='slide__inner'>
                   <div className='rel'>
                     <div className='slide__text'>
                       <h1>{study.node.name}</h1>
+                    </div>
+                    <div className='slide__number'>
+                      <h2>0{i + 1}</h2>
+                    </div>
+                    <div className='slide__position'>
+                      <h4>{study.node.role}</h4>
                     </div>
                     <div className='slide__bg' style={{backgroundImage: 'url(' + study.node.image.file.url + ')' }}>
                       <img src={study.node.image.file.url} />
