@@ -31,14 +31,14 @@ class Home extends React.Component {
       pageDots: false,
       prevNextButtons: false,
       wrapAround: true,
+      freeScroll: true,
+      freeScrollFriction: 0.03,
       ease:  'cubic-bezier(0.075, 0.82, 0.165, 1)'
     })
 
     // Lory listeners
 
     const slideShowJazz = (e) => {
-      console.log(fl.selectedIndex)
-
       self.setState({currentSlide: fl.selectedIndex})
     }
 
@@ -62,7 +62,7 @@ class Home extends React.Component {
 
     const animateSlide = (e) => {
       console.log(e.detail)
-      if (e.deltaY >= 1 || e.detail === 1) {
+      if (e.deltaY >= 1 || (e.detlaY === undefined && e.detail === 1)) {
         fl.next()
       } else {
         fl.previous()
