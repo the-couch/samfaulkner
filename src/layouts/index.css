@@ -167,17 +167,9 @@ li.is-selected {
   background-position: 0 50%;
   /* Mask: */
   background-color: red;
-}
-
-.slide__bg:before {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  content: '';
   box-shadow: 0 60px 60px -30px rgba(0,0,0,0.50);
 }
+
 
 .is-selected .slide__bg {
   background-size: 100% 100%;
@@ -190,7 +182,10 @@ li.is-selected {
 
 h1 {
   color: white;
-  font-size: 3rem;
+  font-size: 1.4rem;
+  @media (min-width: 700px) {
+    font-size: 3rem;
+  }
 }
 
 h2 {
@@ -202,10 +197,13 @@ h2 {
 .slide__text {
   transition: all .45s;
   transform-origin: top left;
-  position: absolute;
-  left: -110px;
-  bottom: -90px;
-  transform: rotate(-90deg) translateX(-100px);
+  @media (min-width: 700px) {
+    position: absolute;
+    left: -110px;
+    bottom: -90px;
+    transform: rotate(-90deg) translateX(-100px);
+
+  }
 }
 
 .slide__position {
@@ -213,19 +211,25 @@ h2 {
   color: white;
   position: absolute;
   top: 0;
-  left: -70px;
+  left: -46px;
+  @media (min-width: 800px) {
+    left: -70px;
+  }
 }
 
 .slide__number {
   position: absolute;
   left: 30px;
+  z-index: 10;
   color: white;
   top: -80px;
 }
 
 .is-selected .slide__text {
-  transform: translateX(0) rotate(-90deg);
-  /*bottom: -90px;*/
+  @media (min-width: 700px) {
+    transform: translateX(0) rotate(-90deg);
+    bottom: -90px;
+  }
 }
 
 
