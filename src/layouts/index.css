@@ -96,6 +96,19 @@ body, h1, h2, h3 {
 .slider {}
 
 
+  html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    height: 100%;
+    padding: 0;
+    overflow: auto;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+  }
 .rel {
   position: relative;
 }
@@ -109,13 +122,19 @@ http://flickity.metafizzy.co
 li {
     position: relative;
     display: inline-block;
-    transition: transform 5.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 5.4s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 2s;
 
     /**
      * (optional) if the content inside the slide element has a defined size.
      */
-    width: 100vw;
+    width: 90vw;
+    max-width: 1200px;
     height: 100vh;
+    opacity: 0.05;
+}
+
+li.is-selected {
+  opacity: 1;
 }
 
 .slide__background {
@@ -128,7 +147,7 @@ li {
 }
 
 .slide__inner {
-  width: 80vw;
+  width: 80%;
   max-width: 1200px;
   height: 100vh;
   display: flex;
@@ -138,17 +157,50 @@ li {
   margin: 0 auto;
 }
 
+.slide__bg {
+  transition: all .55s;
+  background-size: 120% 125%;
+  background-position: 0 50%;
+  /* Mask: */
+  background-color: red;
+}
+
+.slide__bg:before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: '';
+  /*box-shadow: 0 60px 60px -30px rgba(0,0,0,0.50);*/
+}
+
+.is-selected .slide__bg {
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+}
+
+.slide__bg img {
+  opacity: 0;
+}
+
 h1 {
   color: white;
   font-size: 3rem;
 }
 
 .slide__text {
+  transition: all .45s;
   transform-origin: top left;
   position: absolute;
-  left: -80px;
-  bottom: -50px;
-  transform: rotate(-90deg);
+  left: -110px;
+  bottom: -90px;
+  transform: rotate(-90deg) translateX(-100px);
+}
+
+.is-selected .slide__text {
+  transform: translateX(0) rotate(-90deg);
+  /*bottom: -90px;*/
 }
 
 
