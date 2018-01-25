@@ -48,6 +48,9 @@ const TemplateWrapper = ({ children }) => (
     >
       {children()}
     </div>
+    <div className='chit__chat'>
+      <h5><a href="mailto:sam@thecouch.nyc">Chit Chat</a></h5>
+    </div>
   </div>
 )
 
