@@ -46,7 +46,7 @@ class Home extends React.Component {
 
     let animate = true
 
-    const debounce = (func, wait = 100) => {
+    const debounce = (func, wait = 80) => {
       let timeout
       return (...args) => {
         clearTimeout(timeout)
@@ -69,7 +69,7 @@ class Home extends React.Component {
       }
     }
 
-    const debounced = debounce(animateSlide, 100)
+    const debounced = debounce(animateSlide, 80)
     window.addEventListener('mousewheel', (e) => { debounced(e) })
     window.addEventListener('DOMMouseScroll', (e) => { debounced(e) })
 
@@ -78,6 +78,15 @@ class Home extends React.Component {
         visible: true
       })
     }, 1000)
+
+    const shadow = document.querySelector('.slide__bg')
+    document.onmousemove = (e) => {
+      const x = e.clientX
+      const y = e.clientY
+      const newX = (e.clientX / 30) + 50
+      const newY = (e.clientY / 30) + 50
+      shadow.style.boxShadow = '0 '+ newX +'px '+ newY +'px -30px rgba(0,0,0,0.50)'
+    }
 
   }
   render () {
