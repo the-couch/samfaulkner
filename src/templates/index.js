@@ -79,9 +79,8 @@ class Home extends React.Component {
       currentSlide
     } = this.state
     return (
-      <div>
-        <div className=''>
-          <div className='slide__background' style={{backgroundColor: studies[currentSlide].node.backgroundColor}} />
+      <div className='rel'>
+        <div className='slide__background' style={{backgroundColor: studies[currentSlide].node.backgroundColor}} />
           <ul className='slides js_slider'>
             {studies.map((study, i) => (
               <li className='slide' key={study.node.id}>
@@ -104,7 +103,6 @@ class Home extends React.Component {
               </li>
             ))}
           </ul>
-        </div>
       </div>
     )
   }
