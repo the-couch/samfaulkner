@@ -102,7 +102,8 @@ class Home extends React.Component {
                     <div className='slide__position'>
                       <h4>{study.node.role}</h4>
                     </div>
-                    <div className={`slide__bg rel ${visible ? 'show' : null}`} style={{backgroundImage: 'url(' + study.node.image.file.url + '?fm=jpg&fl=progressive&q=70)' }}>
+                    <div className={`slide__bg rel ${visible ? 'show' : null}`}>
+                      <div className='slide__full' style={{backgroundImage: 'url(' + study.node.image.file.url + '?fm=jpg&fl=progressive&q=70)' }} />
                       <img src={studies[0].node.image.file.url + '?fm=jpg&fl=progressive&q=70&w=1200'} />
                     </div>
                     <div className='slide__text'>
