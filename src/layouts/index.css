@@ -10,6 +10,7 @@ body, html {
   height: 100%;
   overflow: hidden;
   position: fixed;
+    backface-visibility: hidden;
   width: 100%;
   -webkit-overflow-scrolling: auto;
 }
@@ -171,18 +172,28 @@ li.is-selected {
   background-size: 120% 125%;
   background-position: 0 50%;
   /* Mask: */
-  background-color: red;
+  /*background-color: red;*/
   box-shadow: 0 60px 60px -30px rgba(0,0,0,0.50);
+  backface-visibility: hidden;
 }
 
 
 .is-selected .slide__bg {
   background-size: 100% 100%;
   background-position: 50% 50%;
+  backface-visibility: hidden;
 }
 
 .slide__bg img {
-  /*opacity: 0;*/
+  opacity: 0;
+}
+
+.slide__bg {
+  opacity: 0;
+}
+
+.slide__bg.show {
+  opacity: 1;
 }
 
 a {

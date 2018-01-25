@@ -15,7 +15,8 @@ class Home extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      currentSlide: 0
+      currentSlide: 0,
+      visible: false
     }
   }
   componentDidMount () {
@@ -71,13 +72,20 @@ class Home extends React.Component {
     window.addEventListener('mousewheel', (e) => { debounced(e) })
     window.addEventListener('DOMMouseScroll', (e) => { debounced(e) })
 
+    setTimeout(() => {
+      self.setState({
+        visible: true
+      })
+    }, 1000)
+
   }
   render () {
     const {
       studies
     } = this.props
     const {
-      currentSlide
+      currentSlide,
+      visible
     } = this.state
     return (
       <div className='rel'>
@@ -93,8 +101,8 @@ class Home extends React.Component {
                     <div className='slide__position'>
                       <h4>{study.node.role}</h4>
                     </div>
-                    <div className='slide__bg rel' style={{backgroundImage: 'url(' + study.node.image.file.url + ')' }}>
-                      <img src={studies[0].node.image.file.url} />
+                    <div className={`slide__bg rel ${visible ? 'show' : null}`} style={{backgroundImage: 'url(' + study.node.image.file.url + '?fm=jpg&fl=progressive&q=70)' }}>
+                      <img src={studies[0].node.image.file.url + '?fm=jpg&fl=progressive&q=70&w=1200'} />
                     </div>
                     <div className='slide__text'>
                       <h1>{study.node.name}</h1>
