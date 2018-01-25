@@ -61,7 +61,8 @@ class Home extends React.Component {
     }
 
     const animateSlide = (e) => {
-      if (e.deltaY >= 1) {
+      console.log(e.detail)
+      if (e.deltaY >= 1 || e.detail === 1) {
         fl.next()
       } else {
         fl.previous()
