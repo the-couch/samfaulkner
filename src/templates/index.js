@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Flickity from 'flickity-imagesloaded'
 
 export default class Index extends React.Component {
   render () {
@@ -20,6 +19,8 @@ class Home extends React.Component {
   }
   componentDidMount () {
     const self = this
+
+    const Flickity = require('flickity-imagesloaded')
     const slideshow = document.querySelector('.js_slider')
 
     const fl = new Flickity(slideshow, {
