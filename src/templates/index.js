@@ -1,6 +1,22 @@
 import React from 'react'
 import LazyLoad from 'react-lazyload'
 
+function detectmob() {
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
+}
+
 export default class Index extends React.Component {
   render () {
     const { pathContext } = this.props
@@ -24,13 +40,15 @@ class Home extends React.Component {
     const Flickity = require('flickity-imagesloaded')
     const slideshow = document.querySelector('.js_slider')
 
+    const draggable = detectmob()
+
     const fl = new Flickity(slideshow, {
       contain: true,
       lazyLoad: true,
       pageDots: false,
       prevNextButtons: false,
       wrapAround: true,
-      draggable: false,
+      draggable: draggable,
       freeScroll: true,
       freeScrollFriction: 0.05,
       friction: 0.35,
@@ -69,9 +87,11 @@ class Home extends React.Component {
         fl.previous()
       }
     }
+
     fl.on('scroll', (progress) => {
       moving = true
     })
+
     fl.on('settle', () => {
       moving = false
     })
