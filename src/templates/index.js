@@ -46,6 +46,7 @@ class Home extends React.Component {
     fl.on('select', () => slideShowJazz())
 
     let animate = true
+    let moving = false
 
     const debounce = (func, wait = 80) => {
       let timeout
@@ -69,10 +70,20 @@ class Home extends React.Component {
         fl.previous()
       }
     }
+    fl.on('scroll', (progress) => {
+      moving = true
+    })
+    fl.on('settle', () => {
+      moving = false
+    })
 
     const debounced = debounce(animateSlide, 80)
-    window.addEventListener('mousewheel', (e) => { debounced(e) })
-    window.addEventListener('DOMMouseScroll', (e) => { debounced(e) })
+    window.addEventListener('mousewheel', (e) => {
+      if (!moving) { debounced(e) }
+    })
+    window.addEventListener('DOMMouseScroll', (e) => {
+      if (!moving) { debounced(e) }
+    })
 
     setTimeout(() => {
       self.setState({
