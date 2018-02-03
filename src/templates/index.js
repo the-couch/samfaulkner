@@ -1,8 +1,7 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import { Component } from 'react'
 import LazyLoad from 'react-lazyload'
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   render () {
     const { pathContext } = this.props
     return (
@@ -11,7 +10,7 @@ export default class Index extends React.Component {
   }
 }
 
-class Home extends React.Component {
+class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -31,10 +30,11 @@ class Home extends React.Component {
       pageDots: false,
       prevNextButtons: false,
       wrapAround: true,
+      draggable: false,
       freeScroll: true,
       freeScrollFriction: 0.05,
       friction: 0.35,
-      ease:  'cubic-bezier(0.075, 0.82, 0.165, 1)'
+      ease: 'cubic-bezier(0.075, 0.82, 0.165, 1)'
     })
 
     // Lory listeners
@@ -63,7 +63,6 @@ class Home extends React.Component {
     }
 
     const animateSlide = (e) => {
-      console.log(e.detail)
       if (e.deltaY >= 1 || (e.detlaY === undefined && e.detail === 1)) {
         fl.next()
       } else {
@@ -93,13 +92,12 @@ class Home extends React.Component {
 
     const shadow = document.querySelector('.slide__bg')
     document.onmousemove = (e) => {
-      const x = e.clientX
-      const y = e.clientY
+      // const x = e.clientX
+      // const y = e.clientY
       const newX = (e.clientX / 30) + 50
       const newY = (e.clientY / 30) + 50
-      shadow.style.boxShadow = '0 '+ newX +'px '+ newY +'px -30px rgba(0,0,0,0.50)'
+      shadow.style.boxShadow = '0 ' + newX + 'px ' + newY + 'px -30px rgba(0,0,0,0.50)'
     }
-
   }
   render () {
     const {
@@ -112,29 +110,29 @@ class Home extends React.Component {
     return (
       <div className='rel'>
         <div className='slide__background' style={{backgroundColor: studies[currentSlide].node.backgroundColor}} />
-          <ul className='slides js_slider'>
-            {studies.map((study, i) => (
-              <li className='slide' key={study.node.id}>
-                <div className='slide__inner'>
-                  <div className='rel'>
-                    <div className='slide__number'>
-                      <h2>0{i + 1}</h2>
-                    </div>
-                    <div className='slide__position'>
-                      <h4>{study.node.role}</h4>
-                    </div>
-                    <div className={`slide__bg rel ${visible ? 'show' : null}`}>
-                      <div className='slide__full' style={{backgroundImage: 'url(' + study.node.image.file.url + '?fm=jpg&fl=progressive&q=70)' }} />
-                      <img src={studies[0].node.image.file.url + '?fm=jpg&fl=progressive&q=70&w=1200'} />
-                    </div>
-                    <div className='slide__text'>
-                      <h1>{study.node.name}</h1>
-                    </div>
+        <ul className='slides js_slider'>
+          {studies.map((study, i) => (
+            <li className='slide' key={study.node.id}>
+              <div className='slide__inner'>
+                <div className='rel'>
+                  <div className='slide__number'>
+                    <h2>0{i + 1}</h2>
+                  </div>
+                  <div className='slide__position'>
+                    <h4>{study.node.role}</h4>
+                  </div>
+                  <div className={`slide__bg rel ${visible ? 'show' : null}`}>
+                    <div className='slide__full' style={{ backgroundImage: 'url(' + study.node.image.file.url + '?fm=jpg&fl=progressive&q=70)' }} />
+                    <img src={studies[0].node.image.file.url + '?fm=jpg&fl=progressive&q=70&w=1200'} />
+                  </div>
+                  <div className='slide__text'>
+                    <h1>{study.node.name}</h1>
                   </div>
                 </div>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     )
   }
