@@ -49,7 +49,7 @@ class Home extends React.Component {
       prevNextButtons: false,
       wrapAround: true,
       draggable: draggable,
-      freeScroll: true,
+      freeScroll: false,
       freeScrollFriction: 0.05,
       friction: 0.35,
       ease: 'cubic-bezier(0.075, 0.82, 0.165, 1)'
