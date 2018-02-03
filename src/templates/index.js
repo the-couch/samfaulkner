@@ -1,7 +1,7 @@
-import { Component } from 'react'
+import React from 'react'
 import LazyLoad from 'react-lazyload'
 
-export default class Index extends Component {
+export default class Index extends React.Component {
   render () {
     const { pathContext } = this.props
     return (
@@ -10,7 +10,7 @@ export default class Index extends Component {
   }
 }
 
-class Home extends Component {
+class Home extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
