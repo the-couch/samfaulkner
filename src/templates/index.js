@@ -24,7 +24,23 @@ class Home extends React.Component {
     const Flickity = require('flickity-imagesloaded')
     const slideshow = document.querySelector('.js_slider')
 
-    // const draggable = detectmob()
+    const detectmob = () => {
+     if( navigator.userAgent.match(/Android/i)
+     || navigator.userAgent.match(/webOS/i)
+     || navigator.userAgent.match(/iPhone/i)
+     || navigator.userAgent.match(/iPad/i)
+     || navigator.userAgent.match(/iPod/i)
+     || navigator.userAgent.match(/BlackBerry/i)
+     || navigator.userAgent.match(/Windows Phone/i)
+     ){
+        return true;
+      }
+     else {
+        return false;
+      }
+    }
+
+    const draggable = detectmob()
 
     const fl = new Flickity(slideshow, {
       contain: true,
@@ -32,7 +48,7 @@ class Home extends React.Component {
       pageDots: false,
       prevNextButtons: false,
       wrapAround: true,
-      draggable: false,
+      draggable: draggable,
       freeScroll: false,
       freeScrollFriction: 0.05,
       friction: 0.35,
@@ -61,22 +77,6 @@ class Home extends React.Component {
         timeout = setTimeout(() => {
           animate = true
         }, wait)
-      }
-    }
-
-    const detectmob = () => {
-     if( navigator.userAgent.match(/Android/i)
-     || navigator.userAgent.match(/webOS/i)
-     || navigator.userAgent.match(/iPhone/i)
-     || navigator.userAgent.match(/iPad/i)
-     || navigator.userAgent.match(/iPod/i)
-     || navigator.userAgent.match(/BlackBerry/i)
-     || navigator.userAgent.match(/Windows Phone/i)
-     ){
-        return true;
-      }
-     else {
-        return false;
       }
     }
 
