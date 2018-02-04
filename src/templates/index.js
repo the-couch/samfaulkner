@@ -1,22 +1,6 @@
 import React from 'react'
 import LazyLoad from 'react-lazyload'
 
-// function detectmob() {
-//  if( navigator.userAgent.match(/Android/i)
-//  || navigator.userAgent.match(/webOS/i)
-//  || navigator.userAgent.match(/iPhone/i)
-//  || navigator.userAgent.match(/iPad/i)
-//  || navigator.userAgent.match(/iPod/i)
-//  || navigator.userAgent.match(/BlackBerry/i)
-//  || navigator.userAgent.match(/Windows Phone/i)
-//  ){
-//     return true;
-//   }
-//  else {
-//     return false;
-//   }
-// }
-
 export default class Index extends React.Component {
   render () {
     const { pathContext } = this.props
@@ -77,6 +61,22 @@ class Home extends React.Component {
         timeout = setTimeout(() => {
           animate = true
         }, wait)
+      }
+    }
+
+    const detectmob = () => {
+     if( navigator.userAgent.match(/Android/i)
+     || navigator.userAgent.match(/webOS/i)
+     || navigator.userAgent.match(/iPhone/i)
+     || navigator.userAgent.match(/iPad/i)
+     || navigator.userAgent.match(/iPod/i)
+     || navigator.userAgent.match(/BlackBerry/i)
+     || navigator.userAgent.match(/Windows Phone/i)
+     ){
+        return true;
+      }
+     else {
+        return false;
       }
     }
 
